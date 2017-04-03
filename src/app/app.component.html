@@ -1,0 +1,52 @@
+<h1> Table with the data:</h1>
+<table class="pure-table pure-table-horizontal">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Code 1</th>
+        <th>Code 2</th>
+        <th>Code 3</th>
+        <th>Code 4</th>
+        <th>Code 5</th>
+        <th>Def</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let json of data_json ">
+        <td>{{json.id}}</td>
+
+        <td><input [ngModel]="0 | splitStringIdx: json.jkl" (ngModelChange)="jkl_1=$event" type="text"/></td>
+        <td><input [ngModel]="1 | splitStringIdx: json.jkl" (ngModelChange)="jkl_2=$event" type="text"/></td>
+        <td><input [ngModel]="2 | splitStringIdx: json.jkl" (ngModelChange)="jkl_3=$event" type="text"/></td>
+        <td><input [ngModel]="3 | splitStringIdx: json.jkl" (ngModelChange)="jkl_4=$event" type="text"/></td>
+        <td><input [ngModel]="4 | splitStringIdx: json.jkl" (ngModelChange)="jkl_5=$event" type="text"/></td>
+
+        <td><input type="checkbox" [(ngModel)]="json.def"/></td>
+        <td>
+            <button (click)="update(json)">Save</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<td>
+    <button (click)="newDataJson()">New Entry</button>
+</td>
+
+<hr>
+<b>debug:</b>
+<br>
+
+<div *ngIf="selectedJson">
+    Selected Json:
+    <br>
+    <b> id: </b>{{selectedJson.id}}
+    <br>
+    <b> jkl: </b>{{selectedJson.jkl}}
+    <br>
+    <b> def: </b>{{selectedJson.def}}
+    <br>
+    <b> updated jkl: </b>{{to_update_jkl_str}}
+</div>
