@@ -11,6 +11,7 @@ export class AppComponent {
 
     json:DataJson;
     selectedJson:DataJson;
+    states :Array<Object>;
     data_json:Array<DataJson>;
 
     jkl_1:string;
@@ -20,12 +21,16 @@ export class AppComponent {
     jkl_5:string;
     to_update_jkl_str:string;
 
-
     constructor() {
         //Initialize data_json with HTTP GET request or the JSON Service method.
         this.data_json = [
-            new DataJson(1, true, "", "M,NO,PQ,M,ST"),
-            new DataJson(2, false, "", "U,VW,XY,Z,AB")
+            new DataJson(true, "", "M,NO,PQ,M,ST"),
+            new DataJson(false, "", "U,VW,XY,Z,AB")
+        ];
+        this.states = [
+            {num: 0, name: "AR"},
+            {num: 1, name: "WI"},
+            {num: 2, name: "MI"}
         ];
     }
 
@@ -56,6 +61,11 @@ export class AppComponent {
 
         //assign this string to the json we'd like to pass to the server.
         this.to_update_jkl_str = updatedString;
+
+        console.log("Json: ");
+        console.log(this.selectedJson);
+        console.log("Updated String: " + updatedString);
+
     }
 
     newDataJson():void {
